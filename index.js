@@ -45,3 +45,34 @@ const bookStore = {
 
 // Write your code here!
 
+// 1. Select the DOM element with the id 'header'
+const bookStoreTitle = document.querySelector('#header');
+
+// 2. Change its text to the 'name' property of the bookStore object
+bookStoreTitle.textContent = bookStore.name;
+
+// Select the element where the books will be listed
+const bookList = document.querySelector('#book-list');
+
+// Loop through every book in the 'books' array
+bookStore.books.forEach(book => {
+    // 1. Create the necessary HTML elements
+    const bookContainer = document.createElement('li');
+    const bookTitle = document.createElement('h3');
+    const bookAuthor = document.createElement('p');
+    const bookImage = document.createElement('img');
+    
+    // 2. Assign the book's data to the created elements
+    bookTitle.textContent = book.title;
+    bookAuthor.textContent = book.author;
+    bookImage.src = book.imageUrl;
+
+    // 3. Assemble the elements together
+    // Add title, author, and image into the li (bookContainer)
+    bookContainer.appendChild(bookTitle);
+    bookContainer.appendChild(bookAuthor);
+    bookContainer.appendChild(bookImage);
+
+    // 4. Append the finished li to the main book list in the DOM
+    bookList.appendChild(bookContainer);
+});
